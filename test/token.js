@@ -56,7 +56,7 @@ contract('Campaign', function(accounts) {
   });
 
   it('should work when trying to send ether during the sale', async function() {
-    // await token.changeController(sale.address);
+    await token.changeController(sale.address);
     const { timestamp } = web3.eth.getBlock('latest');
     const travelTime = startTime - timestamp + 60; // 60 seconds after the start of the sale
     await timetravel(travelTime);
