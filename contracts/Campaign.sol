@@ -83,7 +83,7 @@ contract Campaign is TokenController, Owned {
     ) {
         require ((_endFundingTime >= now) &&           // Cannot end in the past
             (_endFundingTime > _startFundingTime) &&
-            (_maximumFunding <= 10000 ether) &&        // The Beta is limited
+            // (_maximumFunding <= 10000 ether) &&        // The Beta is limited
             (_vaultAddress != 0));                    // To prevent burning ETH
         startFundingTime = _startFundingTime;
         endFundingTime = _endFundingTime;
