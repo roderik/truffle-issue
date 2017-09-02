@@ -47,7 +47,8 @@ contract('Campaign', function(accounts) {
       wallet.address,
       token.address
     );
-    token.changeController(sale.address);
+    await token.changeController(sale.address);
+    console.log(accounts[0], wallet.address, token.address, sale.address);
   });
 
   it('should work when trying to send ether during the sale', async function() {
