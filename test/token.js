@@ -47,11 +47,16 @@ contract('Campaign', function(accounts) {
       wallet.address,
       token.address
     );
-    await token.changeController(sale.address);
-    console.log(accounts[0], wallet.address, token.address, sale.address);
+  });
+
+  it('should return correct balances after generation', async function() {
+    await token.generateTokens(accounts[1], 100);
+    const totalSupply = await token.totalSupply();
+    assert.equal(totalSupply.toNumber(), 100);
   });
 
   it('should work when trying to send ether during the sale', async function() {
+    // await token.changeController(sale.address);
     const { timestamp } = web3.eth.getBlock('latest');
     const travelTime = startTime - timestamp + 60; // 60 seconds after the start of the sale
     await timetravel(travelTime);
